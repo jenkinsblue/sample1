@@ -1,20 +1,21 @@
-pipeline {
-  agent any
-  stages {
-    stage('SCM') {
-      steps {
-        git(url: 'https://github.com/carreerit/mavenrepo.git', branch: 'master', poll: true)
-      }
-    }
-    stage('BUILD') {
-      steps {
-        sh 'mvn clean compile package'
-      }
-    }
-    stage('DEPLOY') {
-      steps {
-        sh 'mvn deploy'
-      }
-    }
-  }
+node ('master') {
+stage ('SCM') {
+    git 'https://github.com/carreerit/mavenrepo.git'
+}
+
+stage ('BUILD') {
+    sh 'mvn clean compile package'
+}
+
+stage ('UPLOAD') {
+    sh 'mvn deploy'
+}
+
+stage ('TEST') {
+    echo 'TEST'
+}
+
+stage ('DEPLOY') {
+    echo 'DEPLOY'
+}
 }
