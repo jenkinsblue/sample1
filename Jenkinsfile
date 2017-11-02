@@ -4,7 +4,7 @@ stage ('SCM') {
 }
 
 stage ('BUILD') {
-    sh 'mvn clean compile package'
+    sh 'mvn clean compile package deploy'
 }
 
 stage ('UPLOAD') {
