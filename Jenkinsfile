@@ -10,6 +10,10 @@ stage ('BUILD') {
 stage ('UPLOAD') {
     sh 'mvn deploy'
 }
+    
+stage ('APPROVE') {
+   input 'Do you want to do the deployment'
+}
 
 stage ('TEST') {
     echo 'TEST'
