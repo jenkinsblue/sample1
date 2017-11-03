@@ -16,7 +16,7 @@ stage ('APPROVE') {
 }
 
 stage ('TEST') {
-    echo 'TEST'
+    sh 'sh deploy-for-test.sh'
 }
 
 stage ('DEPLOY') {
