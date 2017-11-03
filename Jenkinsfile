@@ -20,6 +20,6 @@ stage ('TEST') {
 }
 
 stage ('DEPLOY') {
-    echo 'DEPLOY'
+    sh 'ansible-playbook -i inventory --private-key=/var/lib/jenkins/pem/admin.pem -u admin deploy.yml'
 }
 }
